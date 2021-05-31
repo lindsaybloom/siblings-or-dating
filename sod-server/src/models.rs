@@ -11,6 +11,7 @@ pub struct Post {
 }
 
 impl Post {
+    #[allow(dead_code)]
     pub fn new(image_url: String, dating: bool) -> Self {
         Self {
             id: None,
