@@ -1,3 +1,6 @@
+mod post;
+
+use self::post::Post;
 use mongodb::{
     bson::doc,
     options::{ClientOptions, ResolverConfig},
@@ -16,19 +19,14 @@ pub async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     let posts = client.database("sod").collection("posts");
 
-    let new_item = doc! {
-        "imgUrl": "ifgkndkn",
-        "dating": true,
-    };
+    let new_item = Post::new("ifgkndkn".to_string(), true);
 
     let res_id = posts.insert_one(new_item, None).await?;
     println!("new id: {}", res_id.inserted_id);
 
-    let post = posts
-        .find_one(doc! { "imgUrl": "ifgkndkn" }, None)
-        .await?;
+    let post = posts.find_one(doc! { "imgUrl": "ifgkndkn" }, None).await?;
 
-    println!("Post: {}", post.unwrap());
+    println!("Post: {:?}", post.unwrap());
 
     Ok(())
 }

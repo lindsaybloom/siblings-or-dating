@@ -7,3 +7,4 @@ edition = "2018"
 [dependencies]
 mongodb = "2.0.0-beta"
 tokio = "1.6.1"
+serde = "1.0"
