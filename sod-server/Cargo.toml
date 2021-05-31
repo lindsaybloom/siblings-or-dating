@@ -1,0 +1,9 @@
+[package]
+name = "sod-server"
+version = "0.1.0"
+authors = ["austinabell <austinabell8@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+mongodb = "2.0.0-beta"
+tokio = "1.6.1"
