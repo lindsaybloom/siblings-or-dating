@@ -17,6 +17,7 @@ type Error = error::Error;
 
 #[tokio::main]
 pub async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    dotenv::dotenv().ok();
     let client_uri = env::var("MONGODB_URI").unwrap_or("mongodb://localhost:27017".to_string());
 
     let options =
